@@ -479,6 +479,11 @@ def controlLoopProcess(file_list: List[str]):
             CTL.currentFile_CurrentPart = 1 if  CTL.numberOfFiles else 0
         #end
 
+        # Export executable script
+        if keyboard.is_pressed("e"):
+            create_executable(file_list)
+        #end
+
         # Print the legend
         CTL.printStateAndLegend()
 
@@ -516,12 +521,6 @@ def controlLoopProcess(file_list: List[str]):
             #end
         #end
 
-
-        # Export executable script
-        if keyboard.is_pressed("e"):
-            create_executable(file_list)
-        #end
-        
         # Clear the print buffer
         CTL.copyBufferToClipboardAndClear()
     #end
