@@ -480,9 +480,9 @@ def controlLoopProcess(file_list: List[str]):
         #end
 
         # Export executable script
-        if keyboard.is_pressed("e"):
-            create_executable(file_list)
-        #end
+        # if keyboard.is_pressed("e"):
+        #     create_executable(file_list)
+        # #end
 
         # Print the legend
         CTL.printStateAndLegend()
