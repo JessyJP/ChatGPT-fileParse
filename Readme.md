@@ -4,9 +4,15 @@ This Python script is a file and directory processing tool that provides various
 path sanitizing, file and directory structuring, data processing, and automatic executable creation. 
 It supports both text and binary file processing with versatile viewing modes.
 
+
+## TODO(s):
+- [ ] improve export 
+- [ ] add export to file if the users are interested 
+- [ ] make a simple GUI 
+
 ## Author
 
-[Your Name]
+JessyJP
 
 ## Date
 
@@ -22,6 +28,7 @@ Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
 to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+
 copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
 
