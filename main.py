@@ -782,7 +782,8 @@ def process_unified_continuous_mode(CTL: ControlStructure, file_structures: List
         # Compute the unified mode state
         persistent_unified_mode_state.update(get_current_sub_control_state(CTL))
         
-        sepLine = lambda n=30: '\n'+n*'='+'\n'
+        ns = 0 if CTL.SimpleHeaderFooter.state else 30
+        sepLine = lambda n=ns: '\n'+n*'='+'\n'
         CTL.bufferAndPrint(f"{sepLine()}File structure:{sepLine()}")
         # Add the directory file structure
         print_directory_structures(file_structures, CTL) 
@@ -856,7 +857,7 @@ def compute_header_footer(CTL: ControlStructure, file_path: str, part_n: int = N
     #end
 
     if CTL.SimpleHeaderFooter.state:    
-        header = f'{stream}: "{file_path}" {part_info if part_info else ""}:\n"'
+        header = f'{stream}: "{file_path}" {part_info if part_info else ""}:\n"\n'
         footer = f'"'
     else:
         header = f'{stream}: "{file_path}"\n--- Beginning of {stream} {part_info if part_info else ""} ---\n'
@@ -986,7 +987,8 @@ def clearScreen():
 def create_executable(file_list: List[str]) -> None:
     # Convert file_list to a single string with space-separated file paths
     file_list_str = ' '.join(map(shlex.quote, file_list))
-
+    clearScreen()
+    print("Export the input state as an executable!")
     # Determine the current platform
     current_platform = platform.system()
 
