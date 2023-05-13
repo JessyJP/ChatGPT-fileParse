@@ -712,7 +712,6 @@ def process_selected_file(file_structures: List[Dict], CTL: ControlStructure) ->
     #end
 
     selected_file_structure = filtered_Structures[CTL.currentFile_Ind - 1]
-    file_path = selected_file_structure['absolute_path']
 
     if selected_file_structure['type'] == 'bin':
         print("[INFO] The selected file is a binary file and cannot be displayed.")
@@ -720,11 +719,13 @@ def process_selected_file(file_structures: List[Dict], CTL: ControlStructure) ->
     #end
 
     try:
-        with open(file_path, 'r', encoding='utf-8') as file:
+        with open(selected_file_structure['absolute_path'], 'r', encoding='utf-8') as file:
             # Get the file content
             file_content = file.read()
             # Process the partitioning
-            partitionTextPrint(file_content, file_path, CTL.Limit.state, CTL)
+            partitionTextPrint(file_content, 
+                               selected_file_structure['absolute_path' if CTL.AbsolutePath.state else 'relative_path'], 
+                               CTL.Limit.state, CTL)
         #end
 
     except Exception as e:
@@ -895,6 +896,7 @@ def partitionTextPrint(text_content: str, file_path:str, characterLimit:int, CTL
     CTL.bufferAndPrint(header)
     CTL.bufferAndPrint(text_content, verbosePrintOut)
     CTL.bufferAndPrint(footer)
+    print([f'INFO: File[ {file_path} ]'])
     
     print(f"\n Total character length : {len(header)+len(text_content)+len(footer)}")
 #end
