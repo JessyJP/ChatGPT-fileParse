@@ -591,7 +591,8 @@ def process_input(paths: List[str], CTL: ControlStructure) -> List[Dict]:
                 is_binary = b'\x00' in content
                 file_type = "bin" if is_binary else "txt"
             #end
-            relative_path = path.replace(common_prefix, '', 1)
+            # relative_path = path.replace(common_prefix, '', 1)
+            relative_path = os.path.relpath(path, common_prefix)[1:]
             file_structures.append({"absolute_path": path, "relative_path": relative_path, "type": file_type})
             update_progress(level,path)
         elif os.path.isdir(path) and CTL.Recursive.state:
