@@ -212,7 +212,7 @@ class ControlStructure:
         self.AbsolutePath = ControlStateVariable(
                 state_name = "Absolute Path",
                 default_state=True,
-                kbKey="a",
+                kbKey="i",
                 help_message=pressStr + "to use relative path",
                 options=[True, False],
                 data_type=bool,
